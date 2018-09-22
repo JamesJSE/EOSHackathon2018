@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Team Blue Desktop Platform</title>
+	<% if (htmlWebpackPlugin.options.nodeModules) { %>
+		<!-- Add `node_modules/` to global paths so `require` works properly in development -->
+		<script>
+		require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
+		</script>
+	<% } %>
+</head>
+<body>
+	
+<div id="TB-app"></div>
+<script>
+	// If you want to get rid of the severe risk console message enable the line below. There's a severe benefit to us using a remote file for updates.
+	//process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
+	if ((typeof(process) !== 'undefined') && (process.env.NODE_ENV !== 'development')) window.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+</script>
+
+</body>
+</html>
