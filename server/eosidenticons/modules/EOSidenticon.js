@@ -40,7 +40,7 @@ EOSidenticon = {
         tmpCode += 1;
         if (identCode > identiconParts[key]) { identCode = 1; }
       }
-      identiconFiles[key] = this.imageLoader('http://eosidenticons.com/imgages/identicons/'+key+identCode+'.png');
+      identiconFiles[key] = this.imageLoader('http://eosidenticons.com/images/identicons/'+key+identCode+'.png');
       charCount ++;
     });
     return identiconFiles;
