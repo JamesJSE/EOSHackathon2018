@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
   }
 });
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/account', accountRouter);
 
 module.exports = app;
