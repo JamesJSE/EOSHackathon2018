@@ -1,0 +1,124 @@
+{
+	"name": "team_blue",
+	"version": "1.0.0",
+	"description": "Supported by JSEcoin Ltd",
+	"author": "TeamBlue",
+	"license": "(ISC OR GPL-3.0)",
+	"main": "./dist/desktop/main.js",
+	"private": true,
+	"scripts": {
+		"styleguide": "vue-styleguidist server --config webpack/styleguide/styleguide.config.js",
+		"styleguide:build": "vue-styleguidist build --config webpack/styleguide/styleguide.config.js",
+		"desktop:dev": "node webpack/desktop/dev-runner.js",
+		"desktop:build": "node webpack/desktop/build.js && electron-builder",
+		"web:dev": "node webpack/web2/dev-server.js",
+		"web:build": "node webpack/web2/build.js",
+		"mobile:www": "node webpack/mobile/build.js",
+		"mobile:dev": "node webpack/mobile/dev-server.js",
+		"mobile:build": "npm run mobile:www && cd build/mobile && cordova build",
+		"mobile:build:google": "cross-env ISGOOGLE=TRUE npm run mobile:www && cd build/mobile && cordova build",
+		"mobile:android": "npm run mobile:www && cd build/mobile && cordova run android --device",
+		"mobile:android:google": "cross-env ISGOOGLE=TRUE npm run mobile:www && cd build/mobile && cordova run android --device",
+		"mobile:android-vm": "npm run mobile:www && cd build/mobile && cordova run android",
+		"mobile:android:sign": "npm run mobile:www && cd build/mobile && cordova build --release --buildConfig=../../../signAndroidBuild.json",
+		"mobile:android:google:build:sign": "cross-env ISGOOGLE=TRUE npm run mobile:www && cd build/mobile && cordova build --release --buildConfig=../../../signAndroidBuild.json",
+		"all:build": "npm run styleguide:build && npm run desktop:build && npm run web:build && npm run mobile:android:sign",
+		"lint": "eslint --ext .js,.vue src"
+	},
+	"build": {
+		"productName": "teamBlue",
+		"appId": "com.teamBlue.desktop",
+		"asarUnpack": [
+			"**/static/**/*"
+		],
+		"directories": {
+			"output": "build"
+		},
+		"files": [
+			"dist/desktop/**/*"
+		],
+		"win": {
+			"icon": "build/icons/icon.ico",
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"ia32",
+						"x64"
+					]
+				}
+			]
+		}
+	},
+	"dependencies": {
+		"auto-launch": "^5.0.5",
+		"vue": "^2.5.2",
+		"vue-router": "^3.0.1",
+		"vuex": "^2.3.1"
+	},
+	"devDependencies": {
+		"autoprefixer": "^7.1.5",
+		"babel-core": "^6.26.0",
+		"babel-eslint": "^8.0.1",
+		"babel-loader": "^7.1.2",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.0",
+		"babel-preset-stage-2": "^6.24.1",
+		"babel-register": "^6.26.0",
+		"babili-webpack-plugin": "^0.1.2",
+		"cfonts": "^2.2.1",
+		"chalk": "^2.1.0",
+		"connect-history-api-fallback": "^1.4.0",
+		"copy-webpack-plugin": "^4.1.1",
+		"css-loader": "^0.28.7",
+		"cssnano": "^3.10.0",
+		"electron": "^3.0.0",
+		"electron-builder": "^20.28.4",
+		"electron-debug": "^1.4.0",
+		"electron-devtools-installer": "^2.2.4",
+		"electron-updater": "^3.1.2",
+		"eslint": "^4.9.0",
+		"eslint-config-airbnb-base": "^11.1.3",
+		"eslint-friendly-formatter": "^3.0.0",
+		"eslint-import-resolver-webpack": "^0.8.1",
+		"eslint-loader": "^1.9.0",
+		"eslint-plugin-html": "^3.2.2",
+		"eslint-plugin-import": "^2.7.0",
+		"eslint-plugin-node": "^5.2.0",
+		"eventsource-polyfill": "^0.9.6",
+		"express": "^4.16.2",
+		"extract-text-webpack-plugin": "^3.0.0",
+		"file-loader": "^1.1.5",
+		"friendly-errors-webpack-plugin": "^1.6.1",
+		"html-webpack-plugin": "^2.30.1",
+		"http-proxy-middleware": "^0.17.4",
+		"multispinner": "^0.2.1",
+		"opn": "^5.1.0",
+		"optimize-css-assets-webpack-plugin": "^3.2.0",
+		"ora": "^1.3.0",
+		"rimraf": "^2.6.2",
+		"semver": "^5.4.1",
+		"shelljs": "^0.7.8",
+		"sw-precache-webpack-plugin": "^0.11.4",
+		"uglify-es": "^3.1.3",
+		"url-loader": "^0.6.2",
+		"vue-loader": "^13.3.0",
+		"vue-style-loader": "^3.0.3",
+		"vue-template-compiler": "^2.5.2",
+		"webpack": "^3.7.1",
+		"webpack-bundle-analyzer": "^2.9.0",
+		"webpack-dev-middleware": "^1.12.0",
+		"webpack-dev-server": "^2.9.1",
+		"webpack-hot-middleware": "^2.19.1",
+		"webpack-merge": "^4.1.0"
+	},
+	"engines": {
+		"node": ">= 4.0.0",
+		"npm": ">= 3.0.0"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not ie <= 8"
+	]
+}
