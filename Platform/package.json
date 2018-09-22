@@ -52,9 +52,12 @@
 	},
 	"dependencies": {
 		"auto-launch": "^5.0.5",
+		"eosjs": "^16.0.8",
+		"scatter-js": "^2.5.2",
 		"vue": "^2.5.2",
 		"vue-router": "^3.0.1",
-		"vuex": "^2.3.1"
+		"vuex": "^2.3.1",
+		"zxcvbn": "^4.4.2"
 	},
 	"devDependencies": {
 		"autoprefixer": "^7.1.5",
